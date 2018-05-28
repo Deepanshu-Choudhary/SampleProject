@@ -1,3 +1,5 @@
 #!/bin/bash
-apt-get install -y nginx-light 1.10.3-0ubuntu0.16.04.2
+sudo apt-get update
+sudo apt-get install apache2
+
 
