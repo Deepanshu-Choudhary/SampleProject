@@ -12,6 +12,7 @@ pipeline {
     stage("foo") {
       steps {
         // environment variables are not masked
+        echo $Deploy
         sh 'echo "SOME_VAR is $SOME_VAR"'
         sh 'echo "INBETWEEN is $INBETWEEN"'
         sh 'echo $CRED1 > cred1.txt'
