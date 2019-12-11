@@ -3,6 +3,7 @@ pipeline {
     // environment variables and credential retrieval can be interspersed
     SOME_VAR = "SOME VALUE"
     // this assumes that "cred1" has been created on Jenkins Credentials
+     CRED1 = credentials("Docker")
   }
 
   agent any
@@ -13,6 +14,7 @@ pipeline {
         // environment variables are not masked
         sh 'echo "SOME_VAR is $SOME_VAR"'
         sh 'echo "INBETWEEN is $INBETWEEN"'
+        sh 'echo $CRED1 > cred1.txt'
       }
     }
   }
