@@ -1,5 +1,6 @@
 pipeline {
   environment {
+	  INBETWEEN = "Something in between"
   }
 
   agent any
@@ -11,6 +12,7 @@ pipeline {
 
         // environment variables are not masked
         sh 'echo "Code has been successfully checked out from the repo"'
+	       sh 'echo "INBETWEEN is $INBETWEEN"'
       }
     }
   }
