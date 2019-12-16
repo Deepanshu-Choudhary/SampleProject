@@ -22,7 +22,7 @@ pipeline {
     }
     stage("Building the project") {
       steps {
-	sh 'mvn -Dmaven.test.failure.ignore=true install'
+	sh 'mvn -Dmaven.test.failure.ignore=true $PHASE_TYPE'
 
         // environment variables are not masked
         sh 'echo "Code has been successfully build out from the repo"'
