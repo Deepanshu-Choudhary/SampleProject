@@ -17,7 +17,7 @@ pipeline {
     }
 	  stage("Building the project")
 	  {
-		  steps{
+		  steps {
 		  	mvn clean ./pom.xml
 		  }
 	  }
