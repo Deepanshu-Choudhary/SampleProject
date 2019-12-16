@@ -1,11 +1,4 @@
 pipeline {
-  environment {
-    // environment variables and credential retrieval can be interspersed
-    SOME_VAR = "SOME VALUE"
-    // this assumes that "cred1" has been created on Jenkins Credentials
-     CRED1 = credentials("Docker")
-  }
-
   agent any
 
   stages {
