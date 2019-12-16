@@ -22,7 +22,7 @@ pipeline {
     }
     stage("Building the project") {
       steps {
-	mvn clean ./pom.xml
+	sh 'mvn -Dmaven.test.failure.ignore=true install'
 
         // environment variables are not masked
         sh 'echo "Code has been successfully build out from the repo"'
