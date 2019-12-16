@@ -15,5 +15,11 @@ pipeline {
 	       sh 'echo "INBETWEEN is $INBETWEEN"'
       }
     }
+	  stage("Building the project")
+	  {
+		  steps{
+		  	mvn clean ./pom.xml
+		  }
+	  }
   }
 }
