@@ -1,25 +1,16 @@
 pipeline {
   environment {
-    // environment variables and credential retrieval can be interspersed
-    SOME_VAR = "SOME VALUE"
-    // this assumes that "cred1" has been created on Jenkins Credentials
-    CRED1 = credentials("GITHUB")
-    INBETWEEN = "Something in between"
-    OTHER_VAR = "${SOME_VAR}"
   }
 
   agent any
 
   stages {
-    stage("foo") {
+    stage("Taking Source Checkout") {
       steps {
-        // environment variables are not masked
-        sh 'echo "SOME_VAR is $SOME_VAR"'
-        sh 'echo "INBETWEEN is $INBETWEEN"'
-        sh 'echo "OTHER_VAR is $OTHER_VAR"'
+	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GITHUB', url: 'https://github.com/Deepanshu-Choudhary/sample-project-maven.git']]])
 
-        // credential variables will be masked in console log but not in archived file
-        sh 'echo $CRED1 > cred1.txt'
+        // environment variables are not masked
+        sh 'echo "Code has been successfully checked out from the repo"'
       }
     }
   }
